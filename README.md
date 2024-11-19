@@ -74,6 +74,7 @@ Si tienes instalada la versión jazzy, no hay inconveniente en instalar la versi
 
 Posteriormente, abre el IDE de Arduino, ve a __Sketch > Include Library > Add .ZIP Library__ y selecciona la librería que acabas de descargar (micro_ros_arduino-2.0.7-iron.zip).
 
+## Prueba de la librería micro-ros-arduino
 Prueba cargando algún ejemplo en la ESP32. Para probar el Wi-Fi, usa el que se llama __micro-ros_publisher_wifi__. 
 
 Dentro del __void setup__ encontrarás lo siguiente:
@@ -120,7 +121,7 @@ El programa anterior, funciona solamente si el ROS-DOMAIN-ID es 0. Si el ID es d
 
 ```
 void setup() {
-  set_microros_wifi_transports("LabExp_AutomatyControl", "84896209", "192.168.0.107", 8888);
+  set_microros_wifi_transports("WIFI SSID", "WIFI PASS", "192.168.0.107", 8888);
 
   // Next two lines could be removed
   pinMode(LED_PIN, OUTPUT); 

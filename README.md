@@ -52,11 +52,14 @@ ls /dev/ttyUSB*
 ```
 Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa correr el comando anterior, y verificar cuál desaparece. 
 
-## Creación del workspace del firmware
+## Creación del workspace del firmware (opcional)
+En caso de que se requiera programar la ESP32 directamente en micro-ros, es necesario instalar el ESP-IDF antes de cualquier otra cosa, para ello, sigue los pasos de este [tutorial](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html)
+
+Una vez instalado, procede a crear el firmware para ESP32. Para ello deberás estar en el directorio del espacio de trabajo de micro-ros, es decir `~/uros_ws/` y ejecutar el siguiente comando:
 ```
-ros2 run micro_ros_setup create_firmware_ws.sh host
+ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32
 ```
-## Construcción de firmware
+### Construcción de firmware
 
 ```
 # Build step

@@ -1,4 +1,4 @@
-# Installación de Micro-ROS
+# Instalación de Micro-ROS
 
 Después de instalar ROS 2 y configurar correctamente el espacio de trabajo, se puede instalar el agente de micro-ros siguiendo estos pasos:
 

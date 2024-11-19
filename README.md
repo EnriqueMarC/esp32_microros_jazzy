@@ -35,12 +35,23 @@ ros2 run micro_ros_setup build_agent.sh
 source install/local_setup.bash
 ```
 
-## Ejecutar el agente de micro-ROS para conexión vía UDP
-
+## Ejecutar el agente de micro-ROS
+Para realizar una conexión via Wi-Fi, usando el protocolo UDP4 se debe ejecutar la siguiente instrucción:
 ```
-# Run a micro-ROS agent
 ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
 ```
+El puerto de enlace debe ser el mismo configurado en el transport de Arduino. 
+
+Por otra parte, para una ejecución via serial, se debe ejecutar la siguiente instrucción:
+```
+ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSBx
+```
+dond `x` corresponde al ID del dispositivo. Para verificar qué ID tiene, puedes visualizarlo con el comando 
+```
+ls /dev/ttyUSB*
+```
+Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa correr el comando anterior, y verificar cuál desaparece. 
+
 ## Creación del workspace del firmware
 ```
 ros2 run micro_ros_setup create_firmware_ws.sh host

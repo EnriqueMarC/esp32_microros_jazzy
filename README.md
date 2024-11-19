@@ -36,17 +36,17 @@ source install/local_setup.bash
 ```
 
 ## Ejecutar el agente de micro-ROS
-Para realizar una conexión via Wi-Fi, usando el protocolo UDP4 se debe ejecutar la siguiente instrucción:
+Para realizar una conexión vía Wi-Fi, usando el protocolo UDP4 se debe ejecutar la siguiente instrucción:
 ```
 ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
 ```
 El puerto de enlace debe ser el mismo configurado en el transport de Arduino. 
 
-Por otra parte, para una ejecución via serial, se debe ejecutar la siguiente instrucción:
+Por otra parte, para una ejecución vía serial, se debe ejecutar la siguiente instrucción:
 ```
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSBx
 ```
-dond `x` corresponde al ID del dispositivo. Para verificar qué ID tiene, puedes visualizarlo con el comando 
+donde `x` corresponde al ID del dispositivo. Para verificar qué ID tiene se puede revisar en Arduino -IDE o también puedes visualizarlo con el comando 
 ```
 ls /dev/ttyUSB*
 ```

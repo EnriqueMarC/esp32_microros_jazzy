@@ -162,8 +162,14 @@ cd my_custom_message
 mkdir msg
 touch msg/MyCustomMessage.msg
 ```
+Dentro del archivo `MyCustomMessage.msg` se debe colocar la definición del mensaje, por ejemplo 
 
-En el archivo `CMakelist.txt`, debe añadirse __antes__ de la instrucción `ament_package()` las siguientes líneas:
+```
+float32 elemento1
+float32 elemento2
+```
+
+En el archivo `CMakelist.txt`, del directorio `/my_custom_message` debe añadirse __antes__ de la instrucción `ament_package()` las siguientes líneas:
 
 ```
 find_package(rosidl_default_generators REQUIRED)
@@ -185,8 +191,55 @@ Posteriormente se ejecutan los siguiente comandos:
 ```
 cd ~/Arduino/libraries/micro_ros_arduino/
 
-docker pull microros/micro_ros_static_library_builder:jazzy
-docker run -it --rm -v $(pwd):/project --env MICROROS_LIBRARY_FOLDER=extras microros/micro_ros_static_library_builder:jazzy
+sudo docker pull microros/micro_ros_static_library_builder:jazzy
+sudo docker run -it --rm -v $(pwd):/project --env MICROROS_LIBRARY_FOLDER=extras microros/micro_ros_static_library_builder:jazzy -p esp32
 ```
 
-revisar cómo compilar librerías de microros para arduino....
+Con lo anterior ya deberían aparecer las librerías compiladas en Arduino IDE. Después, será necesario copiar la carpeta que contiene el mensaje personalizado a la dirección `~/uros_ws/src/` y posteriormente compilar el espacio de trabajo. Las siguientes líneas deberían hacer lo anterior:
+
+```
+cp -r ~/Arduino/libraries/micro_ros_arduino/extras/library_generation/extra_packages/my_custom_message/ ~/uros_ws/src/
+cd ~/uros_ws
+colcon build
+```
+
+Para revisar que existen los paquetes en Arduino, puede abrirse el archivo `available_ros2_types.txt`, el cual se encuentra en la ruta `~/Arduino/libraries/micro_ros_arduino/`. 
+```
+...
+lifecycle_msgs/Transition.msg
+lifecycle_msgs/TransitionDescription.msg
+lifecycle_msgs/TransitionEvent.msg
+my_custom_message/Joints.msg
+my_custom_message/MyCustomMessage.msg
+nav_msgs/GetMap.srv
+nav_msgs/GetPlan.srv
+nav_msgs/GridCells.msg
+nav_msgs/LoadMap.srv
+nav_msgs/MapMetaData.msg
+...
+```
+Para hacer lo mismo en ROS 2, se puede ejecutar el siguiente comando
+```
+ ros2 interface list --only-msgs
+```
+
+Esto tiene la siguiente salida:
+
+```
+...
+map_msgs/msg/PointCloud2Update
+map_msgs/msg/ProjectedMap
+map_msgs/msg/ProjectedMapInfo
+micro_ros_msgs/msg/Entity
+micro_ros_msgs/msg/Graph
+micro_ros_msgs/msg/Node
+my_custom_message/msg/Joints  
+my_custom_message/msg/MyCustomMessage
+nav_msgs/msg/GridCells
+nav_msgs/msg/MapMetaData
+nav_msgs/msg/OccupancyGrid
+nav_msgs/msg/Odometry
+nav_msgs/msg/Path
+pcl_msgs/msg/Model
+...
+```

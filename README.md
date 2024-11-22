@@ -50,7 +50,7 @@ donde `x` corresponde al ID del dispositivo. Para verificar qué ID tiene se pue
 ```
 ls /dev/ttyUSB*
 ```
-Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa correr el comando anterior, y verificar cuál desaparece. 
+Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa, ejecuta el comando anterior, y verificar cuál desaparece. Con lo anterior sabrás qué puerto escoger.
 
 ## Creación del workspace del firmware (opcional)
 En caso de que se requiera programar la ESP32 directamente en micro-ros, es necesario instalar el ESP-IDF antes de cualquier otra cosa, para ello, sigue los pasos de este [tutorial](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html)

@@ -9,7 +9,7 @@ Posteriormente, abre el IDE de Arduino, ve a __Sketch > Include Library > Add .Z
 
 ## Creación del espacio de trabajo de micro-ROS
 
-La creación del espacio de trabajo para micro-ROS se realizó utilizando los pasos de [este tutorial](https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/).
+La creación del espacio de trabajo para micro-ROS se realizó utilizando los pasos de [este tutorial](https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/). Sin embargo, hay un ligero cambio para que, cuando se requiera, se puedan compilar nuevos mensajes personalizados. El cambio está en el nombre del workspace, ya que en el tutorial se nombra como __microros_ws__, y en nuestro caso lo llamaremos __uros_ws__.
 
 ```
 # Source the ROS 2 installation

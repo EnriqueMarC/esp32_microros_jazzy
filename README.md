@@ -9,7 +9,7 @@ Posteriormente, abre el IDE de Arduino, ve a __Sketch > Include Library > Add .Z
 
 ## Creación del espacio de trabajo de micro-ROS
 
-Después de instalar ROS 2 y configurar correctamente el espacio de trabajo, se puede instalar el agente de micro-ros siguiendo estos pasos:
+La creación del espacio de trabajo para micro-ROS se realizó utilizando los pasos de [este tutorial](https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/).
 
 ```
 # Source the ROS 2 installation

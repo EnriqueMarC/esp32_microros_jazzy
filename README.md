@@ -1,5 +1,14 @@
 # Instalación de Micro-ROS
 
+## Añadir librerías de micro-ROS a arduino
+
+Para ello descarga las librerías del siguiente repositorio: https://github.com/micro-ROS/micro_ros_arduino/releases
+Si tienes instalada la versión jazzy, no hay inconveniente en instalar la versión para iron (aparece como la v2.0.7-iron). Descarga el archivo que aparece con el nombre __Source code (zip)__.
+
+Posteriormente, abre el IDE de Arduino, ve a __Sketch > Include Library > Add .ZIP Library__ y selecciona la librería que acabas de descargar (micro_ros_arduino-2.0.7-iron.zip).
+
+## Creación del espacio de trabajo de micro-ROS
+
 Después de instalar ROS 2 y configurar correctamente el espacio de trabajo, se puede instalar el agente de micro-ros siguiendo estos pasos:
 
 ```
@@ -66,13 +75,6 @@ ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32
 ros2 run micro_ros_setup build_firmware.sh
 source install/local_setup.bash
 ```
-
-## Añadir librerías de micro-ROS a arduino
-
-Para ello descarga las librerías del siguiente repositorio: https://github.com/micro-ROS/micro_ros_arduino/releases
-Si tienes instalada la versión jazzy, no hay inconveniente en instalar la versión para iron (aparece como la v2.0.7-iron). Descarga el archivo que aparece con el nombre __Source code (zip)__.
-
-Posteriormente, abre el IDE de Arduino, ve a __Sketch > Include Library > Add .ZIP Library__ y selecciona la librería que acabas de descargar (micro_ros_arduino-2.0.7-iron.zip).
 
 ## Prueba de la librería micro-ros-arduino
 Prueba cargando algún ejemplo en la ESP32. Para probar el Wi-Fi, usa el que se llama __micro-ros_publisher_wifi__. 

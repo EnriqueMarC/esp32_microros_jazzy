@@ -168,7 +168,7 @@ Para recompilar las librerías de micro-ROS y las interfacez de ROS2 en el IDE d
 sudo snap install docker
 ```
 
-## Creación de mensajes personalizados
+## Creación de mensajes personalizados 
 Como primer paso, se debe crear un nuevo paquete dentro de las librerías de micro-ROS para arduino
 
 ```

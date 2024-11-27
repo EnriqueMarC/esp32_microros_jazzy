@@ -7,75 +7,6 @@ Si tienes instalada la versión jazzy, no hay inconveniente en instalar la versi
 
 Posteriormente, abre el IDE de Arduino, ve a __Sketch > Include Library > Add .ZIP Library__ y selecciona la librería que acabas de descargar (micro_ros_arduino-2.0.7-iron.zip).
 
-## Creación del espacio de trabajo de micro-ROS
-
-La creación del espacio de trabajo para micro-ROS se realizó utilizando los pasos de [este tutorial](https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/). Sin embargo, hay un ligero cambio para que, cuando se requiera, se puedan compilar nuevos mensajes personalizados. El cambio está en el nombre del workspace, ya que en el tutorial se nombra como __microros_ws__, y en nuestro caso lo llamaremos __uros_ws__.
-
-```
-# Source the ROS 2 installation
-source /opt/ros/$ROS_DISTRO/setup.bash
-
-# Create a workspace and download the micro-ROS tools
-mkdir uros_ws
-cd uros_ws
-git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
-
-# Update dependencies using rosdep
-sudo apt update && rosdep update
-rosdep install --from-paths src --ignore-src -y
-
-# Install pip
-sudo apt-get install python3-pip
-
-# Build micro-ROS tools and source them
-colcon build
-source install/local_setup.bash
-```
-
-
-## Creación del agente micro-ROS
-
-```
-# Download micro-ROS-Agent packages
-ros2 run micro_ros_setup create_agent_ws.sh
-
-# Build step
-ros2 run micro_ros_setup build_agent.sh
-source install/local_setup.bash
-```
-
-## Ejecutar el agente de micro-ROS
-Para realizar una conexión vía Wi-Fi, usando el protocolo UDP4 se debe ejecutar la siguiente instrucción:
-```
-ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
-```
-El puerto de enlace debe ser el mismo configurado en el transport de Arduino. 
-
-Por otra parte, para una ejecución vía serial, se debe ejecutar la siguiente instrucción:
-```
-ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSBx
-```
-donde `x` corresponde al ID del dispositivo. Para verificar qué ID tiene se puede revisar en Arduino -IDE o también puedes visualizarlo con el comando 
-```
-ls /dev/ttyUSB*
-```
-Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa, ejecuta el comando anterior, y verificar cuál desaparece. Con lo anterior sabrás qué puerto escoger.
-
-## Creación del workspace del firmware (opcional)
-En caso de que se requiera programar la ESP32 directamente en micro-ros, es necesario instalar el ESP-IDF antes de cualquier otra cosa, para ello, sigue los pasos de este [tutorial](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html)
-
-Una vez instalado, procede a crear el firmware para ESP32. Para ello deberás estar en el directorio del espacio de trabajo de micro-ros, es decir `~/uros_ws/` y ejecutar el siguiente comando:
-```
-ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32
-```
-### Construcción de firmware
-
-```
-# Build step
-ros2 run micro_ros_setup build_firmware.sh
-source install/local_setup.bash
-```
-
 ## Prueba de la librería micro-ros-arduino
 Prueba cargando algún ejemplo en la ESP32. Para probar el Wi-Fi, usa el que se llama __micro-ros_publisher_wifi__. 
 
@@ -159,6 +90,77 @@ void setup() {
   msg.data = 0;
 }
 ```
+
+## Creación del espacio de trabajo de micro-ROS
+
+La creación del espacio de trabajo para micro-ROS se realizó utilizando los pasos de [este tutorial](https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/). Sin embargo, hay un ligero cambio para que, cuando se requiera, se puedan compilar nuevos mensajes personalizados. El cambio está en el nombre del workspace, ya que en el tutorial se nombra como __microros_ws__, y en nuestro caso lo llamaremos __uros_ws__.
+
+```
+# Source the ROS 2 installation
+source /opt/ros/$ROS_DISTRO/setup.bash
+
+# Create a workspace and download the micro-ROS tools
+mkdir uros_ws
+cd uros_ws
+git clone -b $ROS_DISTRO https://github.com/micro-ROS/micro_ros_setup.git src/micro_ros_setup
+
+# Update dependencies using rosdep
+sudo apt update && rosdep update
+rosdep install --from-paths src --ignore-src -y
+
+# Install pip
+sudo apt-get install python3-pip
+
+# Build micro-ROS tools and source them
+colcon build
+source install/local_setup.bash
+```
+
+
+## Creación del agente micro-ROS
+
+```
+# Download micro-ROS-Agent packages
+ros2 run micro_ros_setup create_agent_ws.sh
+
+# Build step
+ros2 run micro_ros_setup build_agent.sh
+source install/local_setup.bash
+```
+
+## Ejecutar el agente de micro-ROS
+Para realizar una conexión vía Wi-Fi, usando el protocolo UDP4 se debe ejecutar la siguiente instrucción:
+```
+ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
+```
+El puerto de enlace debe ser el mismo configurado en el transport de Arduino. 
+
+Por otra parte, para una ejecución vía serial, se debe ejecutar la siguiente instrucción:
+```
+ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSBx
+```
+donde `x` corresponde al ID del dispositivo. Para verificar qué ID tiene se puede revisar en Arduino -IDE o también puedes visualizarlo con el comando 
+```
+ls /dev/ttyUSB*
+```
+Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa, ejecuta el comando anterior, y verificar cuál desaparece. Con lo anterior sabrás qué puerto escoger.
+
+## Creación del workspace del firmware (opcional)
+En caso de que se requiera programar la ESP32 directamente en micro-ros, es necesario instalar el ESP-IDF antes de cualquier otra cosa, para ello, sigue los pasos de este [tutorial](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html)
+
+Una vez instalado, procede a crear el firmware para ESP32. Para ello deberás estar en el directorio del espacio de trabajo de micro-ros, es decir `~/uros_ws/` y ejecutar el siguiente comando:
+```
+ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32
+```
+### Construcción de firmware
+
+```
+# Build step
+ros2 run micro_ros_setup build_firmware.sh
+source install/local_setup.bash
+```
+
+
 
 ## Installación de docker
 

@@ -161,7 +161,7 @@ source install/local_setup.bash
 ```
 
 ## 7. Creación de mensajes personalizados 
-Para la creación de un mensaje personalizado se deben seguir los pasos mencionados en [esta guía](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html). El paquete que se debe crear es preferible colocarlo en el espacio de trabajo de ROS2, normalmente llamado `/ros2_ws`.
+Para la creación de un mensaje personalizado se deben seguir los pasos mencionados en [esta guía](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html). También es necesario que se tengan en cuenta [estas consideraciones](https://docs.ros.org/en/jazzy/Concepts/Basic/About-Interfaces.html#field-names) al definir el nombre del mensaje. El paquete que se debe crear es preferible colocarlo en el espacio de trabajo de ROS2, normalmente llamado `/ros2_ws`.
 
 Al finalizar el tutorial, en el ambiente de ROS2 debería aparecer el mensaje personalizado. Para verificar, simplemente ejecuta el siguiente comando:
 ```

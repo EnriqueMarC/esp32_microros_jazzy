@@ -191,7 +191,7 @@ pcl_msgs/msg/Model
 Para este caso particular, se tienen dos nuevos mensajes personalizados, el primero llamado __my_custom_message/msg/Joints__ y el segundo __my_custom_message/msg/MyCustomMessage__.
 
 El siguiente paso es crear estos mensajes para micro_ros_arduino. Para ello primero es necesario instalar __Docker__. 
-### 7.1 Installación de docker
+### 7.1 Instalación de docker
 
 Para recompilar las librerías de micro-ROS y las interfacez de ROS2 en el IDE de arduino se debe instalar docker con el siguiente comando:
 

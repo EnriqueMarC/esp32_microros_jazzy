@@ -161,88 +161,14 @@ source install/local_setup.bash
 ```
 
 ## 7. Creación de mensajes personalizados 
+Para la creación de un mensaje personalizado se deben seguir los pasos mencionados en [esta guía](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html). El paquete que se debe crear es preferible colocarlo en el espacio de trabajo de ROS2, normalmente llamado __/ros2_ws__.
 
-### 7.1 Installación de docker
-
-Para recompilar las librerías de micro-ROS y las interfacez de ROS2 en el IDE de arduino se debe instalar docker con el siguiente comando:
-
-```
-sudo snap install docker
-```
-### 7.2 Creación del mensaje personalizado
-Como primer paso, se debe crear un nuevo paquete dentro de las librerías de micro-ROS para arduino
-
-
-```
-cd ~/Arduino/libraries/micro_ros_arduino/
-pushd extras/library_generation/extra_packages
-ros2 pkg create --build-type ament_cmake my_custom_message
-cd my_custom_message
-mkdir msg
-touch msg/MyCustomMessage.msg
-```
-Dentro del archivo `MyCustomMessage.msg` se debe colocar la definición del mensaje, por ejemplo 
-
-```
-float32 elemento1
-float32 elemento2
-```
-
-En el archivo `CMakelist.txt`, del directorio `/my_custom_message` debe añadirse __antes__ de la instrucción `ament_package()` las siguientes líneas:
-
-```
-find_package(rosidl_default_generators REQUIRED)
-
-rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/MyCustomMessage.msg"
- )
-```
-Después, en el archivo `package.xml`, añade las siguientes instrucciones
-
-```
-<build_depend>rosidl_default_generators</build_depend>
-<exec_depend>rosidl_default_runtime</exec_depend>
-<member_of_group>rosidl_interface_packages</member_of_group>
-```
-
-Posteriormente se ejecutan los siguiente comandos:
-
-```
-cd ~/Arduino/libraries/micro_ros_arduino/
-
-sudo docker pull microros/micro_ros_static_library_builder:jazzy
-sudo docker run -it --rm -v $(pwd):/project --env MICROROS_LIBRARY_FOLDER=extras microros/micro_ros_static_library_builder:jazzy -p esp32
-```
-
-Con lo anterior ya deberían aparecer las librerías compiladas en Arduino IDE. Después, será necesario copiar la carpeta que contiene el mensaje personalizado a la dirección `~/uros_ws/src/` y posteriormente compilar el espacio de trabajo. Las siguientes líneas deberían hacer lo anterior:
-
-```
-cp -r ~/Arduino/libraries/micro_ros_arduino/extras/library_generation/extra_packages/my_custom_message/ ~/uros_ws/src/
-cd ~/uros_ws
-colcon build
-```
-
-Para revisar que existen los paquetes en Arduino, puede abrirse el archivo `available_ros2_types.txt`, el cual se encuentra en la ruta `~/Arduino/libraries/micro_ros_arduino/`. 
-```
-...
-lifecycle_msgs/Transition.msg
-lifecycle_msgs/TransitionDescription.msg
-lifecycle_msgs/TransitionEvent.msg
-my_custom_message/Joints.msg
-my_custom_message/MyCustomMessage.msg
-nav_msgs/GetMap.srv
-nav_msgs/GetPlan.srv
-nav_msgs/GridCells.msg
-nav_msgs/LoadMap.srv
-nav_msgs/MapMetaData.msg
-...
-```
-Para hacer lo mismo en ROS 2, se puede ejecutar el siguiente comando
+Al finalizar el tutorial, en el ambiente de ROS2 debería aparecer el mensaje personalizado. Para verificar, simplemente ejecuta el siguiente comando:
 ```
  ros2 interface list --only-msgs
 ```
 
-Esto tiene la siguiente salida:
+Esto entrega la siguiente salida:
 
 ```
 ...
@@ -262,3 +188,44 @@ nav_msgs/msg/Path
 pcl_msgs/msg/Model
 ...
 ```
+Para este caso particular, se tienen dos nuevos mensajes personalizados, el primero llamado __my_custom_message/msg/Joints__ y el segundo __my_custom_message/msg/MyCustomMessage__.
+
+El siguiente paso es crear estos mensajes para micro_ros_arduino. Para ello primero es necesario instalar __Docker__. 
+### 7.1 Installación de docker
+
+Para recompilar las librerías de micro-ROS y las interfacez de ROS2 en el IDE de arduino se debe instalar docker con el siguiente comando:
+
+```
+sudo snap install docker
+```
+### 7.2 Creación del mensaje personalizado
+
+Una vez que se tiene el paquete del nuevo mensaje en ROS2, es suficiente con copiar ese directorio a la ruta `~/Arduino/libraries/micro_ros_arduino/`. Esto se puede hacer desde el explorador de archivos o por medio de la terminal:
+
+```
+scp -r /home/<user>/ros2_ws/src/<package_name>/ /home/<user>/Arduino/libraries/micro_ros_arduino/extras/library_generation/extra_packages/
+```
+Ahora, se procede a compilar las librerías para ser usadas en Arduino-IDE:
+```
+cd ~/Arduino/libraries/micro_ros_arduino/
+
+sudo docker pull microros/micro_ros_static_library_builder:jazzy
+sudo docker run -it --rm -v $(pwd):/project --env MICROROS_LIBRARY_FOLDER=extras microros/micro_ros_static_library_builder:jazzy -p esp32
+```
+
+Con lo anterior ya deberían aparecer las librerías compiladas en Arduino IDE. Para revisar que existen los paquetes en Arduino, puede abrirse el archivo `available_ros2_types.txt`, el cual se encuentra en la ruta `~/Arduino/libraries/micro_ros_arduino/`. 
+```
+...
+lifecycle_msgs/Transition.msg
+lifecycle_msgs/TransitionDescription.msg
+lifecycle_msgs/TransitionEvent.msg
+my_custom_message/Joints.msg
+my_custom_message/MyCustomMessage.msg
+nav_msgs/GetMap.srv
+nav_msgs/GetPlan.srv
+nav_msgs/GridCells.msg
+nav_msgs/LoadMap.srv
+nav_msgs/MapMetaData.msg
+...
+```
+En este caso aparecerán también los mensajes como en el caso del ambiente de ROS2, `my_custom_message/Joints.msg` y `my_custom_message/MyCustomMessage.msg`. 

@@ -169,7 +169,6 @@ Al finalizar el tutorial, en el ambiente de ROS2 debería aparecer el mensaje pe
 ```
 
 Esto entrega la siguiente salida:
-
 ```
 ...
 map_msgs/msg/PointCloud2Update
@@ -229,3 +228,32 @@ nav_msgs/MapMetaData.msg
 ...
 ```
 En este caso aparecerán también los mensajes como en el caso del ambiente de ROS2, `my_custom_message/Joints.msg` y `my_custom_message/MyCustomMessage.msg`. 
+### 7.3 Uso del mensaje personalizado en Arduino-IDE
+
+Es recomendable reiniciar Arduino-IDE en caso de que se esté utilizando la versión 2.0 o superior y que se tenga habilitada la opción de sugerencia de comandos. Una vez dentro de Arduino-IDE, en el preámbulo del proyecto se deberá incluir la nueva librería, se tendría algo como lo siguiente:
+```
+#include <micro_ros_arduino.h>
+
+#include <stdio.h>
+#include <rcl/rcl.h>
+#include <rcl/error_handling.h>
+#include <rclc/rclc.h>
+#include <rclc/executor.h>
+#include <my_custom_message/msg/joints.h>
+ ```
+
+Nótese que el nombre del tipo de mensaje se coloca todo en minúsculas y al final se coloca `.h`. Siempre será así cuando incluyan las librerías, mientras que para crear una variable con ese tipo de dato, sí se respetarán las mayúsculas que aparezcan en los nombres:
+
+```
+rcl_subscription_t subscriber;
+rcl_publisher_t publisher;
+rclc_executor_t executor;
+rclc_support_t support;
+rcl_allocator_t allocator;
+rcl_node_t node;
+rcl_timer_t timer;
+
+
+my_custom_message__msg__Joints q;
+```
+Otro detalle importante son las separaciones entre el nombre del paquete, el directorio msg y el tipo de dato, en este caso, se ocupan dos guiones bajos '_'.  

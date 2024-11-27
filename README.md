@@ -160,18 +160,18 @@ ros2 run micro_ros_setup build_firmware.sh
 source install/local_setup.bash
 ```
 
+## Creación de mensajes personalizados 
 
-
-## Installación de docker
+### Installación de docker
 
 Para recompilar las librerías de micro-ROS y las interfacez de ROS2 en el IDE de arduino se debe instalar docker con el siguiente comando:
 
 ```
 sudo snap install docker
 ```
-
-## Creación de mensajes personalizados 
+## Creación del mensaje personalizado
 Como primer paso, se debe crear un nuevo paquete dentro de las librerías de micro-ROS para arduino
+
 
 ```
 cd ~/Arduino/libraries/micro_ros_arduino/

@@ -188,7 +188,7 @@ nav_msgs/msg/Path
 pcl_msgs/msg/Model
 ...
 ```
-Para este caso particular, se tienen dos nuevos mensajes personalizados, el primero llamado __my_custom_message/msg/Joints__ y el segundo __my_custom_message/msg/MyCustomMessage__.
+Para este caso particular, se tienen dos nuevos mensajes personalizados, el primero llamado `my_custom_message/msg/Joints` y el segundo `my_custom_message/msg/MyCustomMessage`.
 
 El siguiente paso es crear estos mensajes para micro_ros_arduino. Para ello primero es necesario instalar __Docker__. 
 ### 7.1 Instalación de docker

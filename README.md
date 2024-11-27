@@ -93,7 +93,7 @@ void setup() {
 
 ## 3. Creación del espacio de trabajo de micro-ROS
 
-La creación del espacio de trabajo para micro-ROS se realizó utilizando los pasos de [este tutorial](https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/). Sin embargo, hay un ligero cambio para que, cuando se requiera, se puedan compilar nuevos mensajes personalizados. El cambio está en el nombre del workspace, ya que en el tutorial se nombra como __microros_ws__, y en nuestro caso lo llamaremos __uros_ws__.
+La creación del espacio de trabajo para micro-ROS se realizó utilizando los pasos de [este tutorial](https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/). Sin embargo, hay un ligero cambio en el nombre del directorio del espacio de trabajo, ya que en el tutorial se nombra como __microros_ws__, y en nuestro caso lo llamaremos __uros_ws__. Este cambio se realizó debido a que es necesario para la compilación de las librerías de micro_ros_arduino en caso de que se creen nuevas interfaces (mensajes y servicios). 
 
 ```
 # Source the ROS 2 installation

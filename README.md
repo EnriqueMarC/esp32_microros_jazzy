@@ -40,7 +40,7 @@ void setup() {
 }
 ```
 
-Para configurar la conexión de la ESP32 a Wi-Fi, coloca los datos de la red en los espacios que dicen __WIFI SSID__ y __WIFI PASS__. En el primero coloca el nombre de la red y en el segundo la contraseña.
+Para configurar la conexión de la ESP32 a Wi-Fi, coloca los datos de la red en los espacios que dicen `WIFI SSID` y `WIFI PASS`. En el primero coloca el nombre de la red y en el segundo la contraseña.
 
 En el tercer campo debes colocar la ip de la computadora que está corriendo el agente de micro-ROS. Para obtener la ip, puedes usar el siguiente comando en una terminal:
 ```
@@ -50,7 +50,7 @@ El cuarto elemento sirve para colocar el puerto por el cual se realiza la comuni
 
 Las demáslíneas sirven para configurar otros aspectos del nodo, tales como el nombre del nodo, la creación del publisher, la definición del tipo de dato y el nombre del tópico.
 
-El programa anterior, funciona solamente si el ROS-DOMAIN-ID es 0. Si el ID es diferente entonces la configuración en el __void setup__ quedaría de la siguiente manera
+El programa anterior, funciona solamente si el ROS-DOMAIN-ID es 0. Si el ID es diferente entonces la configuración en el `void setup()` quedaría de la siguiente manera
 
 ```
 void setup() {
@@ -161,7 +161,7 @@ source install/local_setup.bash
 ```
 
 ## 7. Creación de mensajes personalizados 
-Para la creación de un mensaje personalizado se deben seguir los pasos mencionados en [esta guía](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html). El paquete que se debe crear es preferible colocarlo en el espacio de trabajo de ROS2, normalmente llamado __/ros2_ws__.
+Para la creación de un mensaje personalizado se deben seguir los pasos mencionados en [esta guía](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html). El paquete que se debe crear es preferible colocarlo en el espacio de trabajo de ROS2, normalmente llamado `/ros2_ws`.
 
 Al finalizar el tutorial, en el ambiente de ROS2 debería aparecer el mensaje personalizado. Para verificar, simplemente ejecuta el siguiente comando:
 ```

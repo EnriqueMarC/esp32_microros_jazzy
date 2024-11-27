@@ -1,13 +1,13 @@
 # Instalación de Micro-ROS
 
-## Añadir librerías de micro-ROS a arduino
+## 1. Añadir librerías de micro-ROS a arduino
 
 Para ello descarga las librerías del siguiente repositorio: https://github.com/micro-ROS/micro_ros_arduino/releases
 Si tienes instalada la versión jazzy, no hay inconveniente en instalar la versión para iron (aparece como la v2.0.7-iron). Descarga el archivo que aparece con el nombre __Source code (zip)__.
 
 Posteriormente, abre el IDE de Arduino, ve a __Sketch > Include Library > Add .ZIP Library__ y selecciona la librería que acabas de descargar (micro_ros_arduino-2.0.7-iron.zip).
 
-## Prueba de la librería micro-ros-arduino
+## 2. Prueba de la librería micro-ros-arduino
 Prueba cargando algún ejemplo en la ESP32. Para probar el Wi-Fi, usa el que se llama __micro-ros_publisher_wifi__. 
 
 Dentro del __void setup__ encontrarás lo siguiente:
@@ -91,7 +91,7 @@ void setup() {
 }
 ```
 
-## Creación del espacio de trabajo de micro-ROS
+## 3. Creación del espacio de trabajo de micro-ROS
 
 La creación del espacio de trabajo para micro-ROS se realizó utilizando los pasos de [este tutorial](https://micro.ros.org/docs/tutorials/core/first_application_rtos/freertos/). Sin embargo, hay un ligero cambio para que, cuando se requiera, se puedan compilar nuevos mensajes personalizados. El cambio está en el nombre del workspace, ya que en el tutorial se nombra como __microros_ws__, y en nuestro caso lo llamaremos __uros_ws__.
 
@@ -117,7 +117,7 @@ source install/local_setup.bash
 ```
 
 
-## Creación del agente micro-ROS
+## 4. Creación del agente micro-ROS
 
 ```
 # Download micro-ROS-Agent packages
@@ -128,7 +128,7 @@ ros2 run micro_ros_setup build_agent.sh
 source install/local_setup.bash
 ```
 
-## Ejecutar el agente de micro-ROS
+## 5. Ejecutar el agente de micro-ROS
 Para realizar una conexión vía Wi-Fi, usando el protocolo UDP4 se debe ejecutar la siguiente instrucción:
 ```
 ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
@@ -145,14 +145,14 @@ ls /dev/ttyUSB*
 ```
 Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa, ejecuta el comando anterior, y verificar cuál desaparece. Con lo anterior sabrás qué puerto escoger.
 
-## Creación del workspace del firmware (opcional)
+## 6. Creación del workspace del firmware (opcional)
 En caso de que se requiera programar la ESP32 directamente en micro-ros, es necesario instalar el ESP-IDF antes de cualquier otra cosa, para ello, sigue los pasos de este [tutorial](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html)
 
 Una vez instalado, procede a crear el firmware para ESP32. Para ello deberás estar en el directorio del espacio de trabajo de micro-ros, es decir `~/uros_ws/` y ejecutar el siguiente comando:
 ```
 ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32
 ```
-### Construcción de firmware
+### 6.1 Construcción de firmware
 
 ```
 # Build step
@@ -160,16 +160,16 @@ ros2 run micro_ros_setup build_firmware.sh
 source install/local_setup.bash
 ```
 
-## Creación de mensajes personalizados 
+## 7. Creación de mensajes personalizados 
 
-### Installación de docker
+### 7.1 Installación de docker
 
 Para recompilar las librerías de micro-ROS y las interfacez de ROS2 en el IDE de arduino se debe instalar docker con el siguiente comando:
 
 ```
 sudo snap install docker
 ```
-## Creación del mensaje personalizado
+### 7.2 Creación del mensaje personalizado
 Como primer paso, se debe crear un nuevo paquete dentro de las librerías de micro-ROS para arduino
 
 

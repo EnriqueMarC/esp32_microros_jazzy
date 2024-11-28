@@ -14,7 +14,11 @@ Dentro del __void setup__ encontrarás lo siguiente:
 
 ```
 void setup() {
+  // Para comunicación vía Wi-Fi se usa la siguiente función
   set_microros_wifi_transports("WIFI SSID", "WIFI PASS", "192.168.1.57", 8888);
+
+ // Para comunicación serial solamente, se utiliza la siguiente línea
+// set_microros_transports();
 
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, HIGH);

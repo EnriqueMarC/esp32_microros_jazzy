@@ -17,8 +17,8 @@ void setup() {
   // Para comunicación vía Wi-Fi se usa la siguiente función
   set_microros_wifi_transports("WIFI SSID", "WIFI PASS", "192.168.1.57", 8888);
 
- // Para comunicación serial solamente, se utiliza la siguiente línea
-// set_microros_transports();
+ // Para comunicación serial solamente, se utiliza la siguiente línea y se comenta la anterior.
+ // set_microros_transports();
 
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, HIGH);
@@ -58,7 +58,11 @@ El programa anterior, funciona solamente si el ROS-DOMAIN-ID es 0. Si el ID es d
 
 ```
 void setup() {
-  set_microros_wifi_transports("WIFI SSID", "WIFI PASS", "192.168.0.107", 8888);
+   // Para comunicación vía Wi-Fi se usa la siguiente función
+  set_microros_wifi_transports("WIFI SSID", "WIFI PASS", "192.168.1.57", 8888);
+
+  // Para comunicación serial solamente, se utiliza la siguiente línea y se comenta la anterior.
+  // set_microros_transports();
 
   // Next two lines could be removed
   pinMode(LED_PIN, OUTPUT); 

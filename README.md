@@ -1,4 +1,27 @@
 # Instalación de Micro-ROS
+## 0. Descarga de Arduino-IDE y configuración para uso de ESP32
+La descarga de Arduino-IDE para Ubuntu se puede hacer desde la [página oficial](https://www.arduino.cc/en/software). De las opciones de descarga puede seleccionar la que dice __Linux__ AppImage 64 bits (X86-64). 
+
+Una vez descargado, debería de aparecer en el directorio `Descargas` el archivo `arduino-ide_<versión>_Linux_64bit.AppImage`. Ahora será necesario mover este archivo a un directorio que se coloque en la `carpeta personal`, para ello puedes ejecutar las siguientes instrucciones en una terminal:
+
+```
+mkdir ~/Arduino
+```
+Y para copiar el archivo de Arduino-IDE puedes ejecutar:
+```
+mv ~/Descargas/arduino-ide_<versión>_Linux_64bit.AppImage ~/Arduino/
+```
+Antes de ejecutar Arduino-IDE será necesario establecerlo como programa. Para darle este permiso, ve a la carpeta `Arduino` y da clic derecho sobre el archivo `arduino-ide_<versión>_Linux_64bit.AppImage` y selecciona la opción `Propiedades`, si estás en ubuntu 24.04 hasta abajo de esta nueva ventana aparecerá la opción `Ejecutable como un programa`, actívala y guarda los cambios. Si todo está bien en el sistema será suficiente con dar doble clic sobre el archivo y se abrirá el IDE. En caso de que no se abra, es probable que haga falta la instalación de un paquete en Ubuntu. Puedes probar el siguiente comando para instalarlo si estás en __Ubuntu 24.04__:
+```
+sudo apt install libfuse2t64
+```
+Si estás en __Ubuntu 22.04__ prueba el siguiente:
+
+```
+sudo apt install libfuse2
+```
+
+Con lo anterior debería ser posible ejecutar Arduino-IDE. 
 
 ## 1. Añadir librerías de micro-ROS a arduino
 

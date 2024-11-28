@@ -23,8 +23,9 @@ sudo apt install libfuse2
 
 Con lo anterior debería ser posible ejecutar Arduino-IDE. Por último, para poder usar la ESP32 es necesario descargar la información de la tarjeta en el IDE. Para hacerlo, en la barra lateral izquierda, selecciona la opción `Boards manager` y sigue los pasos de la siguiente imagen:
 
+<p align="center">
 <img src="arduino_esp32.png" alt="arduino_ide" width="300px"/>
-
+</p>
 
 ## 1. Añadir librerías de micro-ROS a arduino
 

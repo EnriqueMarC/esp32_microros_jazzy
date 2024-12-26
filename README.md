@@ -1,5 +1,12 @@
 # Instalación de Micro-ROS
-## 0. Descarga de Arduino-IDE y configuración para uso de ESP32
+
+En este tutorial se han recopilado los pasos necesarios para la instalación y configuración de micro-ROS usando la librería de micro-ros-arduino y Arduino IDE. A continuación se muestra el contenido de este repositorio:
+
+- [Descarga de Arduino IDE y configuración para uso de ESP32](#descarga-de-arduino-ide-y-configuración-para-uso-de-esp32)
+- [Añadir librerías de micro-ROS a arduino](#añadir-librerías-de-micro-ros-a-arduino)
+- [Prueba de la librería micro-ros-arduino](#prueba-de-la-librería-micro-ros-arduino)
+  
+## Descarga de Arduino-IDE y configuración para uso de ESP32
 La descarga de Arduino-IDE para Ubuntu se puede hacer desde la [página oficial](https://www.arduino.cc/en/software). De las opciones de descarga puede seleccionar la que dice __Linux__ AppImage 64 bits (X86-64). 
 
 Una vez descargado, debería de aparecer en el directorio `Descargas` el archivo `arduino-ide_<versión>_Linux_64bit.AppImage`. Ahora será necesario mover este archivo a un directorio que se coloque en la `carpeta personal`, para ello puedes ejecutar las siguientes instrucciones en una terminal:
@@ -27,14 +34,14 @@ Con lo anterior debería ser posible ejecutar Arduino-IDE. Por último, para pod
 <img src="arduino_esp32.png" alt="arduino_ide" width="300px"/>
 </p>
 
-## 1. Añadir librerías de micro-ROS a arduino
+## Añadir librerías de micro-ROS a arduino
 
 Para ello descarga las librerías del siguiente repositorio: https://github.com/micro-ROS/micro_ros_arduino/releases
 Si tienes instalada la versión jazzy, no hay inconveniente en instalar la versión para iron (aparece como la v2.0.7-iron). Descarga el archivo que aparece con el nombre __Source code (zip)__.
 
 Posteriormente, abre el IDE de Arduino, ve a __Sketch > Include Library > Add .ZIP Library__ y selecciona la librería que acabas de descargar (micro_ros_arduino-2.0.7-iron.zip).
 
-## 2. Prueba de la librería micro-ros-arduino
+## Prueba de la librería micro-ros-arduino
 Prueba cargando algún ejemplo en la ESP32. Para probar el Wi-Fi, usa el que se llama __micro-ros_publisher_wifi__. 
 
 Dentro del __void setup__ encontrarás lo siguiente:

@@ -9,7 +9,8 @@ En este tutorial se han recopilado los pasos necesarios para la instalación y c
 - [Creación del agente micro-ROS](#creación-del-agente-micro-ros)
 - [Ejecutar el agente de micro-ROS](#ejecutar-el-agente-de-micro-ros)
 - [Creación del workspace del firmware (opcional)](#creación-del-workspace-del-firmware---opcional)
-- 
+  - [Construcción de firmware](#construcción-de-firmware)
+- [Creación de mensajes personalizados](#creación-de-mensajes-personalizados)
   
 ## Descarga de Arduino-IDE y configuración para uso de ESP32
 La descarga de Arduino-IDE para Ubuntu se puede hacer desde la [página oficial](https://www.arduino.cc/en/software). De las opciones de descarga puede seleccionar la que dice __Linux__ AppImage 64 bits (X86-64). 
@@ -199,7 +200,7 @@ Una vez instalado, procede a crear el firmware para ESP32. Para ello deberás es
 ```
 ros2 run micro_ros_setup create_firmware_ws.sh freertos esp32
 ```
-### 6.1 Construcción de firmware
+### Construcción de firmware
 
 ```
 # Build step
@@ -207,7 +208,7 @@ ros2 run micro_ros_setup build_firmware.sh
 source install/local_setup.bash
 ```
 
-## 7. Creación de mensajes personalizados 
+## Creación de mensajes personalizados 
 Para la creación de un mensaje personalizado se deben seguir los pasos mencionados en [esta guía](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html). También es necesario que se tengan en cuenta [estas consideraciones](https://docs.ros.org/en/jazzy/Concepts/Basic/About-Interfaces.html#field-names) al definir el nombre del mensaje. El paquete que se debe crear es preferible colocarlo en el espacio de trabajo de ROS2, normalmente llamado `/ros2_ws`.
 
 Al finalizar el tutorial, en el ambiente de ROS2 debería aparecer el mensaje personalizado. Para verificar, simplemente ejecuta el siguiente comando:

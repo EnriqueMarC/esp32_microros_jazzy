@@ -1,4 +1,4 @@
-# Instalación de Micro-ROS
+# Instalación de Micro-ROS en Arduino IDE - Uso en ESP32
 
 En este tutorial se han recopilado los pasos necesarios para la instalación y configuración de micro-ROS usando la librería de micro-ros-arduino y Arduino IDE. A continuación se muestra el contenido de este repositorio:
 

@@ -8,7 +8,7 @@ En este tutorial se han recopilado los pasos necesarios para la instalación y c
 - [Creación del espacio de trabajo de micro-ROS](#creación-del-espacio-de-trabajo-de-micro-ros)
 - [Creación del agente micro-ROS](#creación-del-agente-micro-ros)
 - [Ejecutar el agente de micro-ROS](#ejecutar-el-agente-de-micro-ros)
-- [Creación del workspace del firmware (opcional)](#creación-del-workspace-del-firmware-(opcional))
+- [Creación del workspace del firmware (opcional)](#creación-del-workspace-del-firmware---opcional)
 - 
   
 ## Descarga de Arduino-IDE y configuración para uso de ESP32
@@ -192,7 +192,7 @@ ls /dev/ttyUSB*
 ```
 Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa, ejecuta el comando anterior, y verificar cuál desaparece. Con lo anterior sabrás qué puerto escoger.
 
-## Creación del workspace del firmware (opcional)
+## Creación del workspace del firmware - opcional
 En caso de que se requiera programar la ESP32 directamente en micro-ros, es necesario instalar el ESP-IDF antes de cualquier otra cosa, para ello, sigue los pasos de este [tutorial](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html)
 
 Una vez instalado, procede a crear el firmware para ESP32. Para ello deberás estar en el directorio del espacio de trabajo de micro-ros, es decir `~/uros_ws/` y ejecutar el siguiente comando:

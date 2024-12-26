@@ -6,7 +6,7 @@ En este tutorial se han recopilado los pasos necesarios para la instalación y c
 - [Añadir librerías de micro-ROS a arduino](#añadir-librerías-de-micro-ros-a-arduino)
 - [Prueba de la librería micro-ros-arduino](#prueba-de-la-librería-micro-ros-arduino)
 - [Creación del espacio de trabajo de micro-ROS](#creación-del-espacio-de-trabajo-de-micro-ros)
-- [Creación del agente de micro-ROS](#creación-del-agente-de-micro-ros)
+- [Creación del agente micro-ROS](#creación-del-agente-micro-ros)
 - [Ejecutar el agente de micro-ROS](#ejecutar-el-agente-de-micro-ros)
 - [Creación del workspace del firmware (opcional)](#creación-del-workspace-del-firmware-(opcional))
 - 

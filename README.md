@@ -37,7 +37,7 @@ Si estás en __Ubuntu 22.04__ prueba el siguiente:
 sudo apt install libfuse2
 ```
 
-Con lo anterior debería ser posible ejecutar Arduino-IDE. Por último, para poder usar la ESP32 es necesario descargar la información de la tarjeta en el IDE. Para hacerlo, en la barra lateral izquierda, selecciona la opción `Boards manager` y sigue los pasos que se muestran en la imagen:
+Con lo anterior debería ser posible ejecutar Arduino-IDE. Por último, para poder usar la ESP32 es necesario descargar la información de la tarjeta en el IDE. Para hacerlo, en la barra lateral izquierda, selecciona la opción `Boards manager` y sigue los pasos que se muestran en la imagen. __NOTA IMPORTANTE__: La versión 2.0.3 a 3.0.7 no ha funcionado del todo bien con las librerías de micro-ros-arduino, especialmente al modificar la frecuencia cuando se crea un `timer_callback` para publicar datos. Al aumentar la frecuencia usando estas librerías pareciera tener un tope de 1 Hz. Para evitar este comportamiento se recomienda instalar la versión 2.0.2:
 
 <p align="center">
 <img src="arduino_esp32.png" alt="arduino_ide" width="300px"/>

@@ -11,6 +11,9 @@ En este tutorial se han recopilado los pasos necesarios para la instalación y c
 - [Creación del workspace del firmware (opcional)](#creación-del-workspace-del-firmware---opcional)
   - [Construcción de firmware](#construcción-de-firmware)
 - [Creación de mensajes personalizados](#creación-de-mensajes-personalizados)
+  - [Instalación de docker](#instalación-de-docker)
+  - [Creación del mensaje personalizado](#creación-del-mensaje-personalizado)
+  - [Uso del mensaje personalizado en Arduino-IDE](#uso-del-mensaje-personalizado-en-arduino-ide)
   
 ## Descarga de Arduino-IDE y configuración para uso de ESP32
 La descarga de Arduino-IDE para Ubuntu se puede hacer desde la [página oficial](https://www.arduino.cc/en/software). De las opciones de descarga puede seleccionar la que dice __Linux__ AppImage 64 bits (X86-64). 
@@ -238,14 +241,14 @@ pcl_msgs/msg/Model
 Para este caso particular, se tienen dos nuevos mensajes personalizados, el primero llamado `my_custom_message/msg/Joints` y el segundo `my_custom_message/msg/MyCustomMessage`.
 
 El siguiente paso es crear estos mensajes para micro_ros_arduino. Para ello primero es necesario instalar __Docker__. 
-### 7.1 Instalación de docker
+### Instalación de docker
 
 Para recompilar las librerías de micro-ROS y las interfacez de ROS2 en el IDE de arduino se debe instalar docker con el siguiente comando:
 
 ```
 sudo snap install docker
 ```
-### 7.2 Creación del mensaje personalizado
+### Creación del mensaje personalizado
 
 Una vez que se tiene el paquete del nuevo mensaje en ROS2, es suficiente con copiar ese directorio a la ruta `~/Arduino/libraries/micro_ros_arduino/`. Esto se puede hacer desde el explorador de archivos o por medio de la terminal:
 
@@ -276,7 +279,7 @@ nav_msgs/MapMetaData.msg
 ...
 ```
 En este caso aparecerán también los mensajes como en el caso del ambiente de ROS2, `my_custom_message/Joints.msg` y `my_custom_message/MyCustomMessage.msg`. 
-### 7.3 Uso del mensaje personalizado en Arduino-IDE
+### Uso del mensaje personalizado en Arduino-IDE
 
 Es recomendable reiniciar Arduino-IDE en caso de que se esté utilizando la versión 2.0 o superior y que se tenga habilitada la opción de sugerencia de comandos. Una vez dentro de Arduino-IDE, en el preámbulo del proyecto se deberá incluir la nueva librería, se tendría algo como lo siguiente:
 ```

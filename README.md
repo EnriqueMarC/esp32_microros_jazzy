@@ -39,6 +39,12 @@ Con lo anterior debería ser posible ejecutar Arduino-IDE. Por último, para pod
 <img src="arduino_esp32.png" alt="arduino_ide" width="300px"/>
 </p>
 
+Después de instalar esta versión de la librería, se debe correr el siguiente comando para que no haya problema con las librerías de python:
+
+```
+sudo ln -s /usr/bin/python3 /usr/bin/python
+```
+
 ## Añadir librerías de micro-ROS a arduino
 
 Para ello descarga las librerías del siguiente repositorio: https://github.com/micro-ROS/micro_ros_arduino/releases

@@ -18,9 +18,11 @@ En este tutorial se han recopilado los pasos necesarios para la instalación y c
 
 Te comparto este video con la explicación de los siguientes pasos hasta la comunicación via Wi-Fi:
 
-<a href="https://youtu.be/fNqSc_i6F0M" target="_blank">
-  <img src="https://img.youtube.com/vi/fNqSc_i6F0M/0.jpg" alt="YouTube Video"/>
-</a>
+<p align="center">
+  <a href="https://youtu.be/fNqSc_i6F0M">
+    <img src="https://img.youtube.com/vi/fNqSc_i6F0M/0.jpg" width="600">
+  </a>
+</p>
 
 ## Descarga de Arduino-IDE y configuración para uso de ESP32
 La descarga de Arduino-IDE para Ubuntu se puede hacer desde la [página oficial](https://www.arduino.cc/en/software). De las opciones de descarga puede seleccionar la que dice __Linux__ AppImage 64 bits (X86-64). 

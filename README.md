@@ -116,6 +116,8 @@ void setup() {
   delay(2000);
 
   allocator = rcl_get_default_allocator();
+  /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+  /* * * * * * * *  Opciones para modificar ROS_DOMAIN_ID  * * * * * * * */
   
   // Create init_options
   rcl_init_options_t init_options = rcl_get_zero_initialized_init_options();
@@ -128,7 +130,9 @@ void setup() {
   RCCHECK(rcl_init_options_set_domain_id(&init_options, domain_id));
 
   //create init_options
-  RCCHECK(rclc_support_init_with_options(&support, 0, NULL, &init_options, &allocator));
+  RCCHECK(rclc_support_init_with_options(&support, 0, NULL, &init_options, &allocator)); // <- IMPORTANTE 
+
+  /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
   // create node
   RCCHECK(rclc_node_init_default(&node, "micro_ros_arduino_wifi_node", "", &support));
@@ -143,6 +147,12 @@ void setup() {
   msg.data = 0;
 }
 ```
+
+Si al cargar el programa en la ESP32 aparece un error diciendo que no se puede abrir el puerto serial, primeramente asegúrate de que estás esogiendo el puerto correcto, en caso de que si sea el correcto, deberás darle permisos con el comando 
+```
+sudo chmod 777 /dev/ttyUSB*
+```
+El nombre del dispositivo puede cambiar, en algunas computadoras puede aparecer como `ttyACM0` o similar.
 
 ## Creación del espacio de trabajo de micro-ROS
 

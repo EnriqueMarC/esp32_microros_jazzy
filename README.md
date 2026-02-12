@@ -14,7 +14,18 @@ En este tutorial se han recopilado los pasos necesarios para la instalación y c
   - [Instalación de docker](#instalación-de-docker)
   - [Creación del mensaje personalizado](#creación-del-mensaje-personalizado)
   - [Uso del mensaje personalizado en Arduino-IDE](#uso-del-mensaje-personalizado-en-arduino-ide)
-  
+
+
+Te comparto este video con la explicación de los siguientes pasos hasta la comunicación via Wi-Fi:
+
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=fNqSc_i6F0M">
+    <img src="https://img.youtube.com" alt="Ver video" style="width:100%; max-width:600px;">
+  </a>
+</div>
+
+
+
 ## Descarga de Arduino-IDE y configuración para uso de ESP32
 La descarga de Arduino-IDE para Ubuntu se puede hacer desde la [página oficial](https://www.arduino.cc/en/software). De las opciones de descarga puede seleccionar la que dice __Linux__ AppImage 64 bits (X86-64). 
 

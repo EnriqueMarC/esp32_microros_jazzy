@@ -99,7 +99,7 @@ El cuarto elemento sirve para colocar el puerto por el cual se realiza la comuni
 
 Las demáslíneas sirven para configurar otros aspectos del nodo, tales como el nombre del nodo, la creación del publisher, la definición del tipo de dato y el nombre del tópico.
 
-El programa anterior, funciona solamente si el ROS-DOMAIN-ID es 0. Si el ID es diferente entonces la configuración en el `void setup()` quedaría de la siguiente manera
+El programa anterior, funciona solamente si el ROS-DOMAIN-ID es 0. Si el ID es diferente entonces la configuración en el `void setup()` quedaría de la siguiente manera:
 
 ```
 void setup() {
@@ -147,12 +147,17 @@ void setup() {
   msg.data = 0;
 }
 ```
+El modelo de dispositivo que debes escoger en Arduino IDE para la ESP32 es __ESP32 Dev Module__. __Nota importante__: Este tutorial está pensado para usarse con la ESP32, no con la ESP32S3 o similar. Para ello antes debes verificar que las librerías sean compatibles con dicha tarjeta.
 
-Si al cargar el programa en la ESP32 aparece un error diciendo que no se puede abrir el puerto serial, primeramente asegúrate de que estás esogiendo el puerto correcto, en caso de que si sea el correcto, deberás darle permisos con el comando 
+Si al cargar el programa en la ESP32 aparece un error diciendo que no se puede abrir el puerto serial, primeramente asegúrate de que estás esogiendo el puerto correcto, en caso de que si sea el correcto, deberás darle permisos con el comando: 
 ```
 sudo chmod 777 /dev/ttyUSB*
 ```
-El nombre del dispositivo puede cambiar, en algunas computadoras puede aparecer como `ttyACM0` o similar.
+El nombre del dispositivo puede cambiar, en algunas computadoras puede aparecer como `ttyACM0` o similar.Para verificar qué ID tiene se puede revisar el comando 
+```
+ls /dev/ttyUSB*
+```
+Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa, ejecuta el comando anterior, y verificar cuál desaparece. Con lo anterior sabrás qué puerto escoger.
 
 ## Creación del espacio de trabajo de micro-ROS
 
@@ -202,11 +207,7 @@ Por otra parte, para una ejecución vía serial, se debe ejecutar la siguiente i
 ```
 ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSBx
 ```
-donde `x` corresponde al ID del dispositivo. Para verificar qué ID tiene se puede revisar en Arduino -IDE o también puedes visualizarlo con el comando 
-```
-ls /dev/ttyUSB*
-```
-Para ello la ESP32 debe estar conectada a la computadora. Si tienes diferentes dispositivos USB, prueba desconectar el que interesa, ejecuta el comando anterior, y verificar cuál desaparece. Con lo anterior sabrás qué puerto escoger.
+donde `x` corresponde al ID del dispositivo. 
 
 ## Creación del workspace del firmware - opcional
 En caso de que se requiera programar la ESP32 directamente en micro-ros, es necesario instalar el ESP-IDF antes de cualquier otra cosa, para ello, sigue los pasos de este [tutorial](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/linux-macos-setup.html)
